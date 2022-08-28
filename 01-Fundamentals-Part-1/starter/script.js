@@ -78,8 +78,8 @@ console.log(x, y);
 const averageAge = (ageJonas + ageSarah) / 2;
 console.log(ageJonas, ageSarah)
 console.log(averageAge);
-*/
 
+//First Challenge
 const markMass = 78;
 const markHeight = 1.69;
 const johnMass = 92;
@@ -104,3 +104,93 @@ let markHigherBMI2 = markBMI2 > johnBMI2;
 
 console.log(markBMI2, johnBMI2);
 console.log(markHigherBMI2);
+
+
+const firstName = "Jonas";
+const job = "teacher";
+const birthYear = 1991;
+const year = 2037;
+
+const jonas = "I'm " + firstName + ", a " + (year - birthYear) + " year old " + job + "!";
+console.log(jonas)
+
+const jonasNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`
+console.log(jonasNew);
+
+const age = 15;
+
+if (age >= 18) {
+    console.log("Sarah can get a driver's license 🤪!")
+} else {
+    const yearsLeft = 18 - age;
+
+    console.log(`Sarah can get her license in ${yearsLeft} years.`)
+}
+
+const birthYear = 2012;
+let century
+if (birthYear <= 2000) {
+    century = "20th century";
+} else {
+    century = "21st century"
+}
+console.log(century);
+
+
+//First Challenge
+const markMass = 78;
+const markHeight = 1.69;
+const johnMass = 92;
+const johnHeight = 1.95;
+
+//const markMass = 95;
+//const markHeight = 1.88;
+//const johnMass = 92;
+//const johnHeight = 1.76;
+
+const markBMI = markMass / markHeight ** 2;
+const johnBMI = johnMass / johnHeight ** 2;
+
+const markHigherBMI = markBMI > johnBMI;
+
+console.log(markBMI, johnBMI);
+console.log(markHigherBMI);
+
+if (markBMI > johnBMI) {
+    console.log("Mark's BMI is higher than John's!")
+} else {
+    console.log("John's BMI is higher than Mark's!");
+}
+
+if (markBMI > johnBMI) {
+    console.log(`Mark's BMI is ${markBMI}, which is higher than John's BMI at ${johnBMI}`)
+} else {
+    console.log(`John's BMI is ${johnBMI}, which is higher than Mark's BMI at ${markBMI}`)
+};
+
+
+// type conversion
+const inputYear = '1991';
+console.log(Number(inputYear), inputYear);
+console.log(Number(inputYear) + 18);
+
+console.log(Number('Jonas'));
+console.log(typeof NaN);
+
+console.log(String(23), 23);
+
+//type coercion
+//JS changes number to string here.
+console.log('I am ' + 23 + ' years old.')
+//JS changes strings to numbers here
+console.log('23' - '10' - 3);
+// with plus sign, JS concatenates instead
+console.log('23' + '10' + 3);
+console.log("23" / "2");
+
+let n = "1" + 1;
+n = n - 1;
+console.log(n)
+
+*/
+
