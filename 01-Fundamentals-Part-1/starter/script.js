@@ -193,4 +193,30 @@ n = n - 1;
 console.log(n)
 
 */
+//falsy = not false, but will become false when converted into boolean
 
+//falsy values (5 types) 0, '', undefined, null, NaN
+// anything else is a truthy value
+
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean('Jonas'));
+console.log(Boolean({}));
+console.log(Boolean(''));
+
+//type coercion to booleans: when using logical operators and in if/else statements
+
+const money = 0;
+
+if (money) {
+    console.log("Don't spend it all")
+} else {
+    console.log("You should get a job!")
+}
+
+let height = 0;
+if (height) {
+    console.log("Yay, height is defined")
+} else {
+    console.log("Height is UNDEFINED")
+}
