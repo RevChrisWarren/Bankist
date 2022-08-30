@@ -192,7 +192,7 @@ let n = "1" + 1;
 n = n - 1;
 console.log(n)
 
-*/
+
 //falsy = not false, but will become false when converted into boolean
 
 //falsy values (5 types) 0, '', undefined, null, NaN
@@ -220,3 +220,90 @@ if (height) {
 } else {
     console.log("Height is UNDEFINED")
 }
+
+
+const age = 18;
+if (age === 18) console.log("You just became an adult");
+
+const favorite = Number(prompt('What is your favorite number?'));
+console.log(favorite)
+
+if (favorite === 23) {
+    console.log('Cool! 23 is a great number!')
+} else if (favorite === 7) {
+    console.log('7 is also a cool number!')
+} else {
+    console.log('Number is not 23 or 7')
+}
+
+if (favorite !== 23) {
+    console.log("why not 23?")
+}
+
+
+//Boolean Logic
+const hasDriversLicense = true;
+const hasGoodVision = true;
+
+// console.log(hasDriversLicense && hasGoodVision);
+// console.log(hasDriversLicense || hasGoodVision);
+// console.log(!hasDriversLicense);
+
+const shouldDrive = hasDriversLicense && hasGoodVision;
+
+// if (shouldDrive) {
+//     console.log("Sarah is able to drive")
+// } else {
+//     console.log("Someone else should drive")
+// }
+
+const isTired = false;
+if (hasDriversLicense && hasGoodVision && !isTired) {
+    console.log("Sarah is able to drive!")
+} else {
+    console.log("Someone else should drive...")
+}
+
+//set 1
+const dscore1 = 96;
+const dscore2 = 108;
+const dscore3 = 89;
+
+const kscore1 = 88;
+const kscore2 = 91;
+const kscore3 = 110;
+
+//set 2
+// const dscore1 = 97;
+// const dscore2 = 112;
+// const dscore3 = 101;
+
+// const kscore1 = 109;
+// const kscore2 = 95;
+// const kscore3 = 123;
+
+//set 3
+// const dscore1 = 97;
+// const dscore2 = 112;
+// const dscore3 = 101;
+
+// const kscore1 = 109;
+// const kscore2 = 95;
+// const kscore3 = 106;
+
+const dolphinAvg = ((dscore1 + dscore2 + dscore3) / 3);
+const koalaAvg = ((kscore1 + kscore2 + kscore3) / 3);
+console.log("Dolphins' average is " + dolphinAvg);
+console.log("Koalas' average is " + koalaAvg)
+
+
+if (dolphinAvg > koalaAvg && dolphinAvg >= 100) {
+    console.log("Dolphins win the trophy!")
+} else if (koalaAvg > dolphinAvg && koalaAvg >= 100) {
+    console.log("Koalas win the trophy!")
+} else if (dolphinAvg === koalaAvg && dolphinAvg >= 100) {
+    console.log("Dolphins and Koalas share the trophy!")
+} else {
+    console.log("Neither team met 100 point requirement, no trophy is awarded!")
+}
+*/
