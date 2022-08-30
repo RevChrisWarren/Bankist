@@ -306,7 +306,7 @@ if (dolphinAvg > koalaAvg && dolphinAvg >= 100) {
 } else {
     console.log("Neither team met 100 point requirement, no trophy is awarded!")
 }
-*/
+
 const day = "sunday";
 switch (day) {
     case "monday":
@@ -345,3 +345,34 @@ if (day === "monday") {
 } else {
     console.log("not a valid day")
 }
+
+
+//ternary or conditional operator basically if/else in one line
+
+const age = 19;
+age >= 18 ? console.log("I like to drink wine 🍷") : console.log("I like to drink water 💧")
+
+const drink = age >= 18 ? 'wine 🍷' : "water 💧";
+console.log(drink);
+
+let drink2;
+if (age >= 18) {
+    drink2 = "wine 🍷"
+} else {
+    drink2 = "water 💧";
+}
+console.log(drink2);
+
+console.log(`I like to drink ${drink}`)
+
+console.log(`I like to drink ${age >= 18 ? 'wine 🍷' : "water 💧"}`);
+
+
+//coding challenge
+const bill = 300;
+
+const tip = bill >= 50 && bill <= 300 ? bill * .15 : bill * .2;
+
+console.log(`The bill is ${bill}, the tip is ${tip}, and the total is ${bill + tip}`)
+*/
+
