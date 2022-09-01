@@ -124,4 +124,90 @@ const checkWinner = (avgDolphins, avgKoalas) => {
 checkWinner(avgDolphins, avgKoalas)
 
 
-*/
+
+const friends = ["Michael", "Steven", "Peter"];
+
+console.log(friends)
+//Array function using new keyword
+const randomYears = new Array(1991, 1984, 2008, 2020);
+console.log(randomYears)
+
+console.log(friends[0]);
+console.log(friends[2]);
+console.log(friends.length);
+console.log(friends[friends.length - 1]);
+
+friends[2] = "Jay";
+console.log(friends);
+
+const firstName = "Jonas"
+const jonas = [firstName, "Schmedtmann", 2037 - 1991, "teacher", friends];
+console.log(jonas);
+
+const calcAge = function (birthYear) {
+    return 2022 - birthYear;
+}
+const years = [1990, 1967, 2002, 2010, 2018];
+
+const age1 = calcAge(years[0]);
+const age2 = calcAge(years[years.length - 1]);
+const age3 = calcAge(years[2]);
+console.log(age1, age2, age3)
+const ages = [calcAge(years[0]), calcAge(years[years.length - 1]), calcAge(years[2])]
+
+//const ages = [age1, age2, age3]
+console.log(ages)
+
+
+//Array Methods
+const friends = ["Michael", "Steven", "Peter"];
+const newLength = friends.push("Jay");
+console.log(friends);
+console.log(newLength)
+
+friends.unshift("John");
+console.log(friends);
+
+friends.pop(); //removes last element of array
+const popped = friends.pop()
+console.log(friends);
+console.log(popped)
+
+friends.shift();
+console.log(friends);
+
+console.log(friends.indexOf('Steven'));
+console.log(friends.indexOf('Bob')); //will get -1
+console.log(friends.includes('Michael'));
+console.log(friends.includes('Mic'));
+
+
+if (friends.includes('Peter')) {
+    console.log('You have a friend named Peter')
+}
+if (friends.includes('Steven')) {
+    console.log('You have a friend named Steven')
+}*/
+//coding challenge 2
+
+const calcTip = (bill) => {
+    if (bill >= 50 && bill <= 300) {
+        return bill * .15
+    } else {
+        return bill * .2
+    }
+}
+console.log(calcTip(100));
+
+const bills = [125, 555, 44]
+console.log(bills[0])
+
+
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+
+const totals = [bills[0] + calcTip(bills[0]), bills[1] + calcTip(bills[1]), bills[2] + calcTip(bills[2])];
+const totals2 = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]]
+console.log(bills)
+console.log(tips)
+console.log(totals)
+console.log(totals2)
