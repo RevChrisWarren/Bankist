@@ -211,7 +211,7 @@ console.log(bills)
 console.log(tips)
 console.log(totals)
 console.log(totals2)
-*/
+
 
 const jonasObject = {
     firstName: "Jonas",
@@ -242,3 +242,116 @@ if (jonasObject[interestedIn]) {
 console.log(jonasObject)
 
 console.log(`${jonasObject.firstName} has ${jonasObject.friends.length} friends, and his best friend is ${jonasObject.friends[0]}.`)
+
+
+const jonasObject = {
+    firstName: "Jonas",
+    lastName: "Schmedtmann",
+    birthYear: 1991,
+    job: "teacher",
+    friends: ['Michael', 'Peter', 'Steven'],
+    hasDriversLicense: true,
+    // calcAge: function (birthYear) {
+    //     return 2037 - birthYear
+    // }
+    calcAge: function () {
+        // console.log(this)
+
+        return 2037 - this.birthYear
+    },
+    getSummary: function () {
+        return `${this.firstName} is a ${this.calcAge()} year old ${this.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} driver's license.`
+    }
+}
+const chris = {
+    firstName: "Chris",
+    birthYear: 1974,
+    // calcAge: function () {
+    //     //console.log(this);
+    //     return 2037 - this.birthYear
+    // }
+    calcAge: function () {
+        //console.log(this);
+        this.age = 2037 - this.birthYear
+        return this.age
+    }
+}
+const jonasAge = jonasObject.calcAge();
+console.log(jonasAge)
+console.log(jonasObject.calcAge());
+// console.log(jonasObject['calcAge'](1991));
+// console.log(jonasObject.calcAge(jonasObject.birthYear));
+// console.log(jonasObject.calcAge())
+console.log(chris.calcAge());
+console.log(chris.age);
+
+console.log(jonasObject.getSummary());
+
+
+
+//Coding challenge three
+//my solution
+
+const mark = {
+    firstName: "Mark",
+    lastName: "Miller",
+    mass: 78,
+    height: 1.69,
+    calcBMI: function () {
+        return this.mass / this.height ** 2
+    }
+
+}
+
+
+const john = {
+    firstName: "John",
+    lastName: "Smith",
+    mass: 92,
+    height: 1.95,
+    calcBMI: function () {
+        return this.mass / this.height ** 2
+    }
+
+}
+const markBMI = mark.calcBMI();
+const johnBMI = john.calcBMI();
+if (markBMI > johnBMI) {
+    console.log(`${mark.firstName} ${mark.lastName}'s BMI (${markBMI} is higher than ${john.firstName} ${john.lastName}'s BMI (${johnBMI}))`)
+} else {
+    console.log(`${john.firstName} ${john.lastName}'s BMI (${johnBMI} is higher than ${mark.firstName} ${mark.lastName}'s BMI (${markBMI}))`)
+}
+
+//teacher's solution
+
+const mark2 = {
+    fullName: 'Mark Miller',
+    mass: 78,
+    height: 1.69,
+    calcBMI: function () {
+        this.bmi = this.mass / this.height ** 2;
+        return this.bmi
+    }
+}
+
+const john2 = {
+    fullName: 'John Smith',
+    mass: 92,
+    height: 1.95,
+    calcBMI: function () {
+        this.bmi = this.mass / this.height ** 2;
+        return this.bmi
+    }
+}
+
+mark2.calcBMI();
+john2.calcBMI();
+console.log(mark2.bmi, john2.bmi);
+
+if (mark2.bmi > john2.bmi) {
+    console.log(`${mark2.fullName}'s BMI (${mark2.bmi}) is higher than ${john2.fullName}'s BMI (${john2.bmi})`)
+} else {
+    console.log(`${john2.fullName}'s BMI (${john2.bmi}) is higher than ${mark2.fullName}'s BMI (${mark2.bmi})`)
+
+}
+*/
