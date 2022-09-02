@@ -220,5 +220,25 @@ const jonasObject = {
     job: "teacher",
     friends: ['Michael', 'Peter', 'Steven']
 };
-
+console.log(jonasObject)
 console.log(jonasObject.firstName, jonasObject.lastName)
+console.log(jonasObject["lastName"]);
+
+const nameKey = "Name";
+console.log(jonasObject['first' + nameKey]);
+//use bracket notation when the key name has to be computed
+const interestedIn = prompt("What do you want to know aout Jonas? Choose between firstName, lastName, age, job, and friends.");
+jonasObject.location = "Portugal";
+jonasObject['twitter'] = "@jonasschmedtmann";
+
+if (jonasObject[interestedIn]) {
+    console.log(jonasObject[interestedIn]);
+} else {
+    console.log("Property doesn't exist")
+}
+
+
+
+console.log(jonasObject)
+
+console.log(`${jonasObject.firstName} has ${jonasObject.friends.length} friends, and his best friend is ${jonasObject.friends[0]}.`)
