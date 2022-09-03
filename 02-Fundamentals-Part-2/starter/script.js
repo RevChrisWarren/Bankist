@@ -354,4 +354,32 @@ if (mark2.bmi > john2.bmi) {
     console.log(`${john2.fullName}'s BMI (${john2.bmi}) is higher than ${mark2.fullName}'s BMI (${mark2.bmi})`)
 
 }
+
+// console.log("Lifting weights repetition 1 🏋🏽")
+// console.log("Lifting weights repetition 2 🏋🏽")
+// console.log("Lifting weights repetition 3 🏋🏽")
+// console.log("Lifting weights repetition 4 🏋🏽")
+// console.log("Lifting weights repetition 5 🏋🏽")
+// console.log("Lifting weights repetition 6 🏋🏽")
+// console.log("Lifting weights repetition 7 🏋🏽")
+// console.log("Lifting weights repetition 8 🏋🏽")
+// console.log("Lifting weights repetition 9 🏋🏽")
+// console.log("Lifting weights repetition 10 🏋🏽")
+
+for (let rep = 1; rep <= 10; rep++) {
+    console.log(`Lifting weights repetition ${rep} 🏋🏽`)
+    //console.log("Lifting weights repetition " + rep + " 🏋🏽")
+}
 */
+
+const jonasArray = [
+    "Jonas",
+    "Schmedtmann",
+    2037 - 1991,
+    "teacher",
+    ['Michael', 'Peter', 'Steven']
+];
+
+for (let i = 0; i <= 4; i++) {
+    console.log(jonasArray[i])
+}
