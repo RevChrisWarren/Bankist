@@ -370,7 +370,53 @@ for (let rep = 1; rep <= 10; rep++) {
     console.log(`Lifting weights repetition ${rep} 🏋🏽`)
     //console.log("Lifting weights repetition " + rep + " 🏋🏽")
 }
-*/
+
+
+const jonasArray = [
+    "Jonas",
+    "Schmedtmann",
+    2037 - 1991,
+    "teacher",
+    ['Michael', 'Peter', 'Steven'],
+    true
+];
+
+let arrayTypes = [];
+
+// for (let i = 0; i < jonasArray.length; i++) {
+//     console.log(jonasArray[i], typeof jonasArray[i]);
+//     //arrayTypes[i] = typeof jonasArray[i];
+//     arrayTypes.push(typeof jonasArray[i]);
+// };
+// console.log(arrayTypes);
+// let ages = []
+// const years = [1991, 2007, 1969, 2020];
+// for (let i = 0; i < years.length; i++) {
+//     ages.push(2037 - years[i]);
+
+// }
+// console.log(ages);
+
+//Continue and Break
+
+
+console.log("---ONLY PRINT STRINGS---")
+for (let i = 0; i < jonasArray.length; i++) {
+    if (typeof jonasArray[i] !== "string") continue;
+    console.log(jonasArray[i], typeof jonasArray[i]);
+    //arrayTypes[i] = typeof jonasArray[i];
+    arrayTypes.push(typeof jonasArray[i]);
+};
+
+
+console.log("---BREAK AT NUMBER---")
+for (let i = 0; i < jonasArray.length; i++) {
+    if (typeof jonasArray[i] === "number") break;
+    console.log(jonasArray[i], typeof jonasArray[i]);
+    //arrayTypes[i] = typeof jonasArray[i];
+    arrayTypes.push(typeof jonasArray[i]);
+};
+
 
 const jonasArray = [
     "Jonas",
@@ -380,6 +426,76 @@ const jonasArray = [
     ['Michael', 'Peter', 'Steven']
 ];
 
-for (let i = 0; i <= 4; i++) {
-    console.log(jonasArray[i])
+//Looping backwards
+for (let i = jonasArray.length - 1; i >= 0; i--) {
+    console.log(i, jonasArray[i]);
+};
+
+//loop in loop
+
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`----Starting Exercise ${exercise}----`)
+    for (let rep = 1; rep < 6; rep++) {
+        console.log(`Exercise ${exercise}:----lifting rep ${rep}----`)
+    }
+
+};
+
+
+//While loops
+
+// for (let rep = 1; rep <= 10; rep++) {
+//     console.log(`Lifting weights repetition ${rep} 🏋🏽`)
+//     //console.log("Lifting weights repetition " + rep + " 🏋🏽")
+// }
+
+// let rep = 1;
+// while (rep <= 10) {
+//     console.log(`WHILE: Lifting weights repetition ${rep} 🏋🏽`);
+//     rep++
+// }
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+console.log(dice);
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1;
+    if (dice === 6) console.log('Loop is about to end')
+};
+*/
+
+//Coding Challenge Four
+
+const calcTip = (bill) => {
+    if (bill >= 50 && bill <= 300) {
+        return bill * .15
+    } else {
+        return bill * .2
+    }
 }
+
+let bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+
+let tips = [];
+let totals = [];
+
+for (let i = 0; i < bills.length; i++) {
+    tips.push(calcTip(bills[i]))
+    totals.push(tips[i] + bills[i]);
+}
+console.log(bills, tips, totals);
+
+const calcAverage = (arr) => {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        // sum = sum + arr[i];
+        sum += arr[i]
+    }
+    console.log(sum)
+    return sum / arr.length
+}
+console.log(calcAverage(totals))
+
+console.log(calcAverage(tips))
+
+console.log(calcAverage(bills))
