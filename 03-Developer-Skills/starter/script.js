@@ -93,7 +93,7 @@ const calcTempAmplitudeBug = function (t1, t2) {
 
 const amplitudeBug = calcTempAmplitudeBug([3, 5, 1], [9, 3, 5])
 console.log(amplitudeBug)
-*/
+
 //my solution
 const arr1 = [17, 21, 23]
 const arr2 = [12, 5, -5, 0, 4]
@@ -121,3 +121,4 @@ const printForecastTeacher = function (arr) {
 }
 
 printForecastTeacher(data2)
+*/
