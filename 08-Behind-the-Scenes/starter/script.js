@@ -53,7 +53,7 @@ function calcAge(birthYear) {
 
 const firstName = 'Jonas';
 calcAge(1991);
-*/
+
 
 //hoisting with vairables
 console.log(me)
@@ -67,16 +67,26 @@ const year = 1991;
 
 //hoisting with funtions (declaration can be called, expression and arrow cannot)
 console.log(addDecl(2, 3));
-console.log(addExp(2, 3));
-console.log(addArrow(2, 3));
+// console.log(addExp(2, 3));
+// console.log(addArrow(2, 3));
 
 function addDecl(a, b) {
     return a + b
 }
+//This will return undefined, not a function
+// var addExp = function (a, b) {
+//     return a + b
+// }
 
-const addExp = function (a, b) {
-    return a + b
+// const addArrow = (a, b) => a + b;
+
+//Example problem with var hoisting, b/c numProducts hoists as undefined, products deleted!
+
+if (!numProducts) deleteShoppingCart();
+
+var numProducts = 10;
+
+function deleteShoppingCart() {
+    console.log('All products deleted')
 }
-
-const addArrow = (a, b) => a + b;
-
+*/
