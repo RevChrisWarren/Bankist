@@ -29,13 +29,23 @@ function calcAge(birthYear) {
     console.log(firstName); //There because it is in global scope
 
     function printAge() {
-        const output = `${firstName}, you are ${age}, born in ${birthYear}`
+        let output = `${firstName}, you are ${age}, born in ${birthYear}`
         console.log(output);
 
         if (birthYear >= 1981 && birthYear <= 1996) {
+            var millennial = true;
+            const firstName = 'Chris';//can declare this variable again within this scope
             const str = `Oh, and you're a millennial, ${firstName}`
             console.log(str);
+
+            function add(a, b) {//not accessible outside this block, but works outside strict mode
+                return a + b
+            }
+
+            output = 'NEW OUTPUT!' // reassigning outer scope variable
         }
+        console.log(millennial); //works because var is function scoped, not block scoped-- cannot access str because it is declared with const
+        console.log(output);
     }
     printAge();
     return age;
