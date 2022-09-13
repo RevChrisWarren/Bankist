@@ -94,18 +94,39 @@ function deleteShoppingCart() {
 var x = 1
 let y = 2
 const z = 3
-*/
+
 //this in global scope is the window object
 console.log(this);
 
-const calcAge = function (birthYear) {
+const calcAge1 = function (birthYear) {
     console.log(2037 - birthYear);
     console.log(this); //in strict mode this is undefined
 }
-calcAge(1991);
+calcAge1(1991);
 
 const calcAgeArrow = (birthYear) => {
     console.log(2037 - birthYear);
     console.log(this); // = window, because that is "this" in the parent (global scope)
 }
 calcAgeArrow(1991);
+
+const jonas = {
+    year: 1991,
+    calcAge: function () {
+        console.log(this);
+        console.log(2037 - this.year);
+    }
+}
+jonas.calcAge()
+
+const chris = {
+    year: 2017
+};
+
+chris.calcAge = jonas.calcAge
+chris.calcAge()
+
+const f = jonas.calcAge;
+console.log(f);
+f();
+*/
