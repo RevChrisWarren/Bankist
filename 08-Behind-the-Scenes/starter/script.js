@@ -22,7 +22,7 @@ const x = first();
 //console.log(a);
 //console.log(b);
 console.log(x);
-*/
+
 
 function calcAge(birthYear) {
     const age = 2037 - birthYear;
@@ -53,3 +53,30 @@ function calcAge(birthYear) {
 
 const firstName = 'Jonas';
 calcAge(1991);
+*/
+
+//hoisting with vairables
+console.log(me)
+// console.log(job);
+// console.log(year);
+
+
+var me = "Jonas";
+let job = 'teacher';
+const year = 1991;
+
+//hoisting with funtions (declaration can be called, expression and arrow cannot)
+console.log(addDecl(2, 3));
+console.log(addExp(2, 3));
+console.log(addArrow(2, 3));
+
+function addDecl(a, b) {
+    return a + b
+}
+
+const addExp = function (a, b) {
+    return a + b
+}
+
+const addArrow = (a, b) => a + b;
+
