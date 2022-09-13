@@ -89,4 +89,23 @@ var numProducts = 10;
 function deleteShoppingCart() {
     console.log('All products deleted')
 }
+
+//only var creates a variable on the window object
+var x = 1
+let y = 2
+const z = 3
 */
+//this in global scope is the window object
+console.log(this);
+
+const calcAge = function (birthYear) {
+    console.log(2037 - birthYear);
+    console.log(this); //in strict mode this is undefined
+}
+calcAge(1991);
+
+const calcAgeArrow = (birthYear) => {
+    console.log(2037 - birthYear);
+    console.log(this); // = window, because that is "this" in the parent (global scope)
+}
+calcAgeArrow(1991);
