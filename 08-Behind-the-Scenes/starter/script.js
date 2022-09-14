@@ -164,4 +164,44 @@ const addArrow = (a, b) => {
 }
 
 addArrow(2, 5)
+
+
+let age = 30;
+let oldAge = age;
+age = 31;
+
+console.log(age); // 31
+console.log(oldAge); // 30
+
+const me = {
+    name: 'Jonas',
+    age: 30
+};
+
+const friend = me;
+friend.age = 27;
+
+console.log('Friend', friend);
+console.log('Jonas', me);
 */
+
+let lastName = 'Williams'
+let oldLastName = lastName
+lastName = 'Davis'
+
+console.log(lastName);
+console.log(oldLastName);
+
+const Jessica = {
+    firstName: 'Jessica',
+    lastName: 'Williams',
+    age: 27,
+};
+
+const marriedJessica = Jessica;
+marriedJessica.lastName = 'Davis'
+console.log('Before Marriage', Jessica);
+console.log('After Marriage', marriedJessica);
+
+// marriedJessica = {};
+
