@@ -129,4 +129,39 @@ chris.calcAge()
 const f = jonas.calcAge;
 console.log(f);
 f();
+
+const jonas = {
+    firstName: 'Jonas',
+    year: 1991,
+    calcAge: function () {
+        console.log(this);
+        console.log(2037 - this.year);
+        // const self = this
+        // const isMillennial = function () {
+        //     console.log(self.year >= 1981 && self.year <= 1996);
+        //     console.log(self);
+        // }
+        const isMillennial = () => {
+            console.log(this.year >= 1981 && this.year <= 1996);
+            console.log(this);
+        }
+        isMillennial();
+    },
+    greet: () => console.log(`Hey ${this.firstName}`)
+}
+jonas.greet();
+jonas.calcAge();
+
+const addExpr = function (a, b) {
+    console.log(arguments);
+    return a + b;
+}
+addExpr(2, 5, 8, 12)
+//arrow function does not have access to argument keyword
+const addArrow = (a, b) => {
+    console.log(arguments);
+    return a + b
+}
+
+addArrow(2, 5)
 */
