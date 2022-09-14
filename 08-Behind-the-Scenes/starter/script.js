@@ -184,14 +184,14 @@ friend.age = 27;
 console.log('Friend', friend);
 console.log('Jonas', me);
 */
-
+//primitive types
 let lastName = 'Williams'
 let oldLastName = lastName
 lastName = 'Davis'
 
 console.log(lastName);
 console.log(oldLastName);
-
+//reference types
 const Jessica = {
     firstName: 'Jessica',
     lastName: 'Williams',
@@ -205,3 +205,21 @@ console.log('After Marriage', marriedJessica);
 
 // marriedJessica = {};
 
+const Jessica2 = {
+    firstName: 'Jessica',
+    lastName: 'Williams',
+    age: 27,
+    family: ['Alice', 'Bob']
+};
+
+const jessicaCopy = Object.assign({}, Jessica2);
+jessicaCopy.lastName = "Davis";
+
+console.log('Before Marriage', Jessica2);
+console.log('After marriage', jessicaCopy);
+
+//cannot do this to object within object because this doesn't change the heap reference
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+console.log('Before Marriage', Jessica2);
+console.log('After marriage', jessicaCopy);
