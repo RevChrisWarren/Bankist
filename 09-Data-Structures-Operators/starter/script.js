@@ -42,6 +42,44 @@ const restaurant = {
 };
 
 restaurant.orderPizza('mushrooms', 'onion', 'spinach')
+
+
+//Logical operators: can use any data type,
+//can return any data type,
+//short-circuiting: if first value is a truthy value, the other operand will not be evaluated
+console.log('--------OR---------')
+// console.log(3 || 'Jonas');
+
+// console.log('' || 'Jonas');
+
+// console.log(true || 0);
+// //both falsy
+// console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests);
+
+const guests2 = restaurant.numGuests || 15;
+console.log(guests2);
+//nullish coalescing operator (??)
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+
+// console.log('-----AND------')
+// //And short circuits when meets first operator that is falsy
+// console.log(0 && 'Jonas');
+// console.log('Jonas' && 7);
+// console.log('Hello' && 23 && null && 'Jonas');
+
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza('mushrooms', 'spinach')
+// };
+
+
+
+// restaurant.orderPizza && restaurant.orderPizza('anchovies');
 /*
 // const ingredients =
 //   [prompt("Let's make some pasta! Ingredient 1?"),
@@ -195,3 +233,5 @@ const x = [23, 4, 5];
 add(...x);
 
 */
+//short circuiting
+
