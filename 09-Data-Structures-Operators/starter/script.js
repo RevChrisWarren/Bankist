@@ -343,7 +343,7 @@ const {
 console.log(team11, draw1, team21);
 
 //6
-*/
+
 const weekdays = ['mon', 'tue', 'wed', 'thurs', 'fri', 'sat', 'sun']
 const openingHours = {
   [weekdays[3]]: {
@@ -390,13 +390,131 @@ restaurant.orderPizza('mushrooms', 'onion', 'spinach')
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
 //FOR OF LOOP
-for (const item of menu) console.log(item);
+// for (const item of menu) console.log(item);
 
-for (const item of menu.entries()) {
-  console.log(`${item[0] + 1}: ${item[1]}`);
+// for (const item of menu.entries()) {
+//   console.log(`${item[0] + 1}: ${item[1]}`);
+// }
+// //Better way with destructuring
+// for (const [i, el] of menu.entries()) {
+//   console.log(`${i + 1}: ${el}`);
+// }
+// if (restaurant.openingHours && restaurant.openingHours.mon)
+//   console.log(restaurant.openingHours.mon.open);
+// //This causes error
+// //console.log(restaurant.openingHours.mon.open);
+// //Solution for this is Optional Chaining
+// console.log(restaurant.openingHours?.mon?.open);
+
+// //Example
+// const days = ['mon', 'tue', 'wed', 'thurs', 'fri', 'sat', 'sun'];
+
+// for (const day of days) {
+//   //console.log(day);
+//   const open = restaurant.openingHours[day]?.open ?? 'closed';
+//   console.log(`On ${day} we open at ${open}`)
+
+// }
+// // on methods to see if it exists before calling it
+// console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+// console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
+
+// //on Arrays
+// const users = [
+//   {
+//     name: 'Jonas',
+//     email: 'Jonas@jonas.com'
+//   }
+// ]
+// console.log(users[0]?.name ?? 'User Array Empty');
+// console.log(users[0]?.na ?? 'User Array Empty');
+
+//Property names
+const properties = Object.keys(openingHours)
+console.log(properties);
+
+
+let openStr = `We are open on ${properties.length} days: `
+for (const day of properties) {
+  openStr += `${day}, `
 }
-//Better way with destructuring
-for (const [i, el] of menu.entries()) {
-  console.log(`${i + 1}: ${el}`);
+
+console.log(openStr);
+
+const values = Object.values(openingHours);
+//console.log(values);
+//Entire object
+const entries = Object.entries(openingHours);
+
+console.log(entries);
+for (const [key, { open, close }] of entries) {
+  console.log(`on ${key}, we open at ${open} and close at ${close}`);
+}
+*/
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+//const entries = Object.entries(game.scored)
+//console.log(entries);
+
+for (const [i, el] of game.scored.entries()) {
+  console.log(`${el} scored goal number ${Number(i) + 1}`);
+}
+
+const odds = Object.values(game.odds)
+let average = 0
+for (const odd of odds)
+  average += odd;
+console.log(average);
+//average = average / odds.length
+average /= odds.length
+console.log(average);
+
+//TEACHER SOLUTION
+for (const [i, player] of game.scored.entries())
+  console.log(`Goal ${i + 1}: ${player}`);
+
+for (const [team, odd] of Object.entries(game.odds)) {
+
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr}: ${odd}`);
 }
 
