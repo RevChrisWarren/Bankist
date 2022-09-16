@@ -4,7 +4,7 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-  */
+
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -43,6 +43,36 @@ const restaurant = {
 
 restaurant.orderPizza('mushrooms', 'onion', 'spinach')
 
+const rest1 = {
+  name: "Capri",
+  //numGuests: 10,
+  numGuests: 0
+}
+
+const rest2 = {
+  name: "La Piazza",
+  owner: "Giovanni Rossi"
+};
+
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+
+//Or assignment operator: Doesn't work with 0
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+// console.log(rest1, rest2);
+// rest1.owner = rest1.owner && '<ANONYMOUS>'//short circuits with first value that is falsy
+// rest2.owner = rest2.owner && '<ANONYMOUS>'
+
+rest1.owner &&= '<ANONYMOUS>';
+rest2.owner &&= '<ANONYMOUS>';
+
+
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+console.log(rest1, rest2);
+
+
 
 //Logical operators: can use any data type,
 //can return any data type,
@@ -80,7 +110,7 @@ console.log(guestCorrect);
 
 
 // restaurant.orderPizza && restaurant.orderPizza('anchovies');
-/*
+
 // const ingredients =
 //   [prompt("Let's make some pasta! Ingredient 1?"),
 //   prompt("Ingredient 2?"),
@@ -232,6 +262,135 @@ add(8, 2, 5, 3, 2, 1, 4)
 const x = [23, 4, 5];
 add(...x);
 
-*/
+
 //short circuiting
 
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+const players1 = game.players[0];
+
+const players2 = game.players[1];
+console.log(players1, players2);
+
+const [gk, ...fieldPlayers] = players1;
+console.log(gk, fieldPlayers);
+
+const allPlayers = [...players1, ...players2]
+console.log(allPlayers);
+
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+console.log(players1Final);
+
+const { team1, x: draw, team2 } = { ...game.odds };
+console.log(team1, draw, team2);
+
+const printGoals = function (...players) {
+  console.log(`${players.length} goals were scored`)
+}
+printGoals("Davies", "Muller", "Lewandowski", "Kimich")
+printGoals("Davies", "Muller")
+printGoals(...game.scored)
+
+team1 < team2 && console.log(`Team one is more likely to win`);
+team2 < team1 && console.log(`Team two is more likely to win`);
+//TEACHER SOLUTION
+
+const [players11, players21] = game.players;
+console.log(players11, players21);
+//5
+const {
+  odds: { team1: team11, x: draw1, team2: team21 },
+} = game;
+console.log(team11, draw1, team21);
+
+//6
+*/
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+  },
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+  orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = "20:00", address }) {
+    console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
+  },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}!`);
+  },
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    //console.log(mainIngredient, otherIngredients);
+  }
+};
+
+restaurant.orderPizza('mushrooms', 'onion', 'spinach')
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+//FOR OF LOOP
+for (const item of menu) console.log(item);
+
+for (const item of menu.entries()) {
+  console.log(`${item[0] + 1}: ${item[1]}`);
+}
+//Better way with destructuring
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
