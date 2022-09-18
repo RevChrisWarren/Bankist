@@ -450,7 +450,7 @@ console.log(entries);
 for (const [key, { open, close }] of entries) {
   console.log(`on ${key}, we open at ${open} and close at ${close}`);
 }
-*/
+
 
 const game = {
   team1: 'Bayern Munich',
@@ -517,4 +517,39 @@ for (const [team, odd] of Object.entries(game.odds)) {
   const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
   console.log(`Odd of ${teamStr}: ${odd}`);
 }
+
+*/
+
+//Sets = collection of unique values
+
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
+console.log(ordersSet);
+
+console.log(new Set('Jonas'));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+//ordersSet.clear();
+
+console.log(ordersSet);
+
+for (const order of ordersSet) console.log(order);
+
+//Example
+
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+console.log(new Set(staff).size);
+
+console.log(new Set('ChrisWarren').size);
+
+
 
