@@ -555,35 +555,35 @@ console.log(new Set('ChrisWarren').size);
 
 //Maps= data structire used to map values to keys.Keys can be of any type.
 
-const rest = new Map();
-rest.set('name', 'Classico Italiano');
-rest.set(1, 'Firenze, Italy')
-console.log(rest.set(2, 'Lisbon, Portugal'));
+// const rest = new Map();
+// rest.set('name', 'Classico Italiano');
+// rest.set(1, 'Firenze, Italy')
+// console.log(rest.set(2, 'Lisbon, Portugal'));
 
-rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
-  .set('open', 11)
-  .set('close', 23)
-  .set(true, 'We are open')
-  .set(false, "We are closed")
+// rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+//   .set('open', 11)
+//   .set('close', 23)
+//   .set(true, 'We are open')
+//   .set(false, "We are closed")
 
 
-console.log(rest.get('name'));
-console.log(rest.get(true));
+// console.log(rest.get('name'));
+// console.log(rest.get(true));
 
-const time = 21;
-console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+// const time = 21;
+// console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
 
-console.log(rest.has('categories'));
+// console.log(rest.has('categories'));
 
-rest.delete(2);
-//rest.clear();
-const arr = [1, 2]
-rest.set(arr, 'Test')
-rest.set(document.querySelector('h1'), 'Heading')
-console.log(rest);
-console.log(rest.size);
+// rest.delete(2);
+// //rest.clear();
+// const arr = [1, 2]
+// rest.set(arr, 'Test')
+// rest.set(document.querySelector('h1'), 'Heading')
+// console.log(rest);
+// console.log(rest.size);
 
-console.log(rest.get(arr));
+// console.log(rest.get(arr));
 
 // const question = new Map([
 //   ['question', 'What is the best programming language in the world?'],
@@ -622,3 +622,43 @@ console.log(rest.get(arr));
 // console.log([...question.entries()]);
 // console.log([...question.keys()]);
 // console.log([...question.values()]);
+
+
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow Card'],
+  [69, '🔴 Red Card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow Card']
+]);
+
+//1
+const events = new Set([...gameEvents.values()])
+console.log(events);
+console.log(Array.from(events));
+
+// const events = [...new Set([...gameEvents.values()])]
+// console.log(events);
+//2
+gameEvents.delete(47);
+console.log(gameEvents);
+//3
+const averageEvents = 90 / gameEvents.size
+console.log(`An event happened on average every ${averageEvents} minutes.`);
+//4
+// for (const [key, value] of gameEvents) {
+//   if (key < 45) {
+//     console.log(`[First Half] ${value}`);
+//   } else {
+//     console.log(`[Second Half] ${value}`)
+//   }
+// }
+for (const [key, value] of gameEvents) {
+  key < 45 ? console.log(`[First Half] ${key}: ${value}`) : console.log(`[Second Half] ${key}: ${value}`)
+}
