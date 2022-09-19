@@ -693,3 +693,70 @@ const checkMiddleSeat = function (seat) {
 checkMiddleSeat('11B');
 checkMiddleSeat('23C');
 checkMiddleSeat('3E');
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+//fix capitalization in passenger name
+const passenger = 'JOnAS'
+const passengerLower = passenger.toLowerCase();
+console.log(passengerLower);
+const passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+const correctName = function (passengerName) {
+  const passengerNameLower = passengerName.toLowerCase();
+  const passengerNameCorrect = passengerNameLower[0].toUpperCase() + passengerNameLower.slice(1);
+  console.log(passengerNameCorrect);
+}
+
+correctName('JOY')
+correctName('griffin')
+
+//compare user input email
+const email = 'hello@jonas.io';
+const loginEmail = '  Hello@Jonas.Io \n'
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail);
+const normalizedEmail = loginEmail.toLowerCase().trim()
+console.log(normalizedEmail);
+
+console.log(email === normalizedEmail);
+
+//replacing portions of strings
+const priceGB = '288,97£'
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement = 'All passengers come to boarding door 23. Boarding door 23.';
+console.log(announcement.replaceAll('door', 'gate'));
+
+//using regex:
+console.log(announcement.replace(/door/g, 'gate'));
+
+//booleans: includes, startsWith, endsWith
+
+const plane1 = 'Airbus A320neo'
+console.log(plane1.includes('A320'));
+console.log(plane1.includes('Boeing'));
+
+console.log(plane1.startsWith('Air'));
+console.log(plane1.endsWith('eo'));
+console.log((plane1.startsWith('Airbus') && plane1.endsWith('neo')));
+
+//Practice
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log("You are not allowed on board");
+  } else {
+    console.log("Welcome aboard!");
+  }
+
+}
+
+checkBaggage('I have a laptop, some food, and a pocket Knife');
+checkBaggage('I have socks and a camera');
+checkBaggage('I have some snacks and a gun for protection');
+
