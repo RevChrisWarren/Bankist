@@ -375,7 +375,7 @@ const restaurant = {
 
   // orderPasta: function (ing1, ing2, ing3) {
   //   console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}!`);
-  // }, 
+  // },
   //NEW WAY TO DO THIS
   orderPasta(ing1, ing2, ing3) {
     console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}!`);
@@ -623,7 +623,7 @@ console.log(new Set('ChrisWarren').size);
 // console.log([...question.keys()]);
 // console.log([...question.values()]);
 
-
+/*
 const gameEvents = new Map([
   [17, '⚽️ GOAL'],
   [36, '🔁 Substitution'],
@@ -662,3 +662,34 @@ console.log(`An event happened on average every ${averageEvents} minutes.`);
 for (const [key, value] of gameEvents) {
   key < 45 ? console.log(`[First Half] ${key}: ${value}`) : console.log(`[Second Half] ${key}: ${value}`)
 }
+*/
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log('B737'[0]);
+console.log(airline.length);
+console.log('B737'.length);
+console.log(airline.indexOf('r'));//only gies first occurrence
+console.log(airline.lastIndexOf('r'));
+console.log(airline.indexOf("Portugal"));
+
+console.log(airline.slice(4));//starts string on element 4
+console.log(airline.slice(4, 7));//starts at 4, does not inlude 7
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+const checkMiddleSeat = function (seat) {
+  //B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E')
+    console.log('You got the middle seat');
+  else console.log('You got lucky!');
+}
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
