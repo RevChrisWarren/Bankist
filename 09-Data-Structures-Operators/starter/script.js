@@ -819,3 +819,41 @@ planesInLine(12)
 */
 
 //Coding Challenge 4
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+const text = document.querySelector('textarea').value;
+
+const text2 = 'john_smith'
+const texts = []
+const toCamelCase = function (text) {
+  const indtexts = text.split('\n');
+  for (const entries of indtexts) {
+    const textLower = entries.toLowerCase().trim();
+    const textSplit = textLower.split('_');
+    //console.log(textSplit);
+    //console.log(textSplit[1][0].toUpperCase() + textSplit[1].slice(1));
+    const textSecondUpper = textSplit[0] + textSplit[1][0].toUpperCase() + textSplit[1].slice(1)
+    //console.log(textSecondUpper);
+    texts.push(textSecondUpper.padEnd(20, " ") + ' ' + '✅'.repeat(texts.length + 1))
+
+    //console.log(texts.join('\n'));
+  }
+
+}
+
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  toCamelCase(text);
+})
+
+//teacher solution
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const rows = text.split('\n');
+  for (const [i, row] of rows.entries()) {
+    const [first, second] = row.toLowerCase().trim().split('_');
+    const output = `${first}${second.replace(second[0], second[0].toUpperCase()
+    )}`
+    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+  }
+})
