@@ -662,7 +662,7 @@ console.log(`An event happened on average every ${averageEvents} minutes.`);
 for (const [key, value] of gameEvents) {
   key < 45 ? console.log(`[First Half] ${key}: ${value}`) : console.log(`[Second Half] ${key}: ${value}`)
 }
-*/
+
 
 const airline = 'TAP Air Portugal';
 const plane = 'A320';
@@ -786,3 +786,36 @@ capitalizeName('jessica ann smith davis')
 capitalizeName('christopher dale warren')
 capitalizeName('jonas schmedtmann')
 
+// padding a string
+const message = 'Go to gate 23'
+console.log(message.padStart(25, '+'));
+console.log(message.padEnd(25, '+'));
+console.log(message.padStart(25, '+').padEnd(35, '+'));
+
+const ccnum = '1234 5678 9123 4567'
+const maskNum = function (num) {
+  const str = String(num);
+  //or const str = num + '';
+  const lastFour = str.slice(-4);
+  // const masked = lastFour.padStart(str.length, "#")
+  // console.log(masked);
+  return lastFour.padStart(str.length, "#")
+
+}
+
+console.log(maskNum(1234567891234567))
+
+//repeat
+
+const message2 = 'Bad Weather... All departures delayed... '
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'✈️'.repeat(n)}`);
+}
+planesInLine(7);
+planesInLine(3);
+planesInLine(12)
+*/
+
+//Coding Challenge 4
