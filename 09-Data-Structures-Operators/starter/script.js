@@ -760,3 +760,29 @@ checkBaggage('I have a laptop, some food, and a pocket Knife');
 checkBaggage('I have socks and a camera');
 checkBaggage('I have some snacks and a gun for protection');
 
+console.log('a+very+nice+string'.split('+'));
+console.log('Jonas Schmedtmann'.split(' '));
+
+
+//split and join
+const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+console.log(firstName, lastName);
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = []
+  for (const n of names) {
+    namesUpper.push(n[0].toUpperCase() + n.slice(1))
+  }
+  console.log(namesUpper.join(' '));
+}
+const passenger1 = 'jessica ann smith davis'
+
+capitalizeName('jessica ann smith davis')
+capitalizeName('christopher dale warren')
+capitalizeName('jonas schmedtmann')
+
