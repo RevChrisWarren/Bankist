@@ -194,3 +194,36 @@ const tax15 = tax(.15)
 
 console.log(tax15(100))
 */
+
+const poll = {
+    question: 'What is your favorite programming language?',
+    options: ['0: Javascript', '1: Python', '2: Rust', '3: C++'],
+    answers: new Array(4).fill(0),
+    registerNewAnswer() {
+        const answer = prompt(`${this.question}\n ${this.options[0]}\n ${this.options[1]}\n ${this.options[2]}\n ${this.options[3]}`)
+        console.log(answer);
+        if (answer === '0') {
+            this.answers[0]++
+        } else if (answer === '1') {
+            this.answers[1]++
+        } else if (answer === '2') {
+            this.answers[2]++
+        } else if (answer === '3') {
+            this.answers[3]++
+        } else {
+            alert('The answer is invalid')
+        }
+        console.log(this.answers);
+        displayResult(this.answers)
+    }
+
+}
+
+
+
+document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll))
+
+const displayResult = function (type) {
+    console.log(`The results are ${poll.answers}`);
+}
+displayResult(5, 2, 3)
