@@ -51,4 +51,101 @@ const newPassport = function (person) {
 newPassport(chris)
 checkIn(flight, chris)
 console.log(chris);
+
+//FUNCTIONS ACCEPTING CALLBACK FUNCTIONS
+const oneWord = function (str) {
+    return str.replaceAll(' ', '').toLowerCase();
+}
+
+const upperFirstWord = function (str) {
+    const [firstWord, ...otherWords] = str.split(' ');
+    return [firstWord.toUpperCase(), ...otherWords].join(' ');
+}
+
+const transformer = function (str, fn) {
+    console.log(`Original String: ${str}`);
+    console.log(`Transformed String: ${fn(str)}`);
+
+    console.log(`transformed by: ${fn.name}`);
+}
+
+transformer('JavaScript is the best', upperFirstWord)
+transformer('JavaScript is great', oneWord)
+
+const high5 = function () {
+    console.log('🤬');
+}
+document.body.addEventListener('click', high5)
+
+const arr = ['Jonas', 'Martha', 'Adam'].forEach(high5)
 */
+/*
+//Functions Returning Functions
+const greet = function (greeting) {
+    return function (name) {
+        console.log(`${greeting} ${name}`);
+    }
+}
+
+const greeterHey = greet('Hey')
+greeterHey('Chris')
+greeterHey('Jonas')
+
+greet("Hello")("Doc")
+let greeter1
+const greet1 = (greeting) => {
+    return greeter1 = (name) => {
+        console.log(`${greeting}, ${name}`);
+
+    }
+}
+greet1('Yo')('Daisy')
+
+const greetArr = greeting => name => console.log(`${greeting}, ${name}`);
+greetArr('Wassup')('Joy')
+*/
+
+const lufthansa = {
+    airline: 'Lufthansa',
+    iataCode: 'LH',
+    bookings: [],
+    book(flightNum, passName) {
+        console.log(`${passName} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+        this.bookings.push({ flight: `${this.iataCode}${flightNum}`, passName })
+    }
+}
+lufthansa.book(236, 'Chris Warren')
+lufthansa.book(655, 'John Smith')
+console.log(lufthansa.bookings);
+
+const eurowings = {
+    airline: 'Eurowings',
+    iataCode: 'EW',
+    bookings: [],
+}
+const book = lufthansa.book;
+//Here the this keyword points to undefined, so does not work
+//book(23, 'Jonas ')
+//Telling JS how to define "This" with Call method
+book.call(eurowings, 345, 'Sarah Williams');
+console.log(eurowings);
+
+book.call(lufthansa, 239, "Doug Cooper")
+console.log(lufthansa);
+
+const swiss = {
+    airline: 'Swiss',
+    iataCode: 'LX',
+    bookings: [],
+
+}
+book.call(swiss, 677, 'Doc Daisiness')
+console.log(swiss);
+
+//Same thing with Apply method
+const flightData = [583, 'George Cooper']
+book.apply(swiss, flightData)
+
+book.apply(lufthansa, [655, "Johnny Depp"])
+
+book.call(swiss, ...flightData)
