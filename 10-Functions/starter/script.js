@@ -149,3 +149,35 @@ book.apply(swiss, flightData)
 book.apply(lufthansa, [655, "Johnny Depp"])
 
 book.call(swiss, ...flightData)
+
+//Bind method
+const bookEW = book.bind(eurowings);
+const bookLX = book.bind(swiss);
+const bookLH = book.bind(lufthansa);
+
+bookEW(43, "Steven Williams")
+console.log(eurowings);
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Chris Warren');
+
+//Objects with event listeners
+lufthansa.planes = 300
+lufthansa.buyPlane = function () {
+    this.planes++
+    console.log(this);
+    console.log(this.planes);
+}
+
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+//Partial Application
+const addTax = (rate, value) => {
+    return value + value * rate
+}
+
+console.log(addTax(.10, 200));
+
+const addVAT = addTax.bind(null, .23)
+
+console.log(addVAT(1000))
