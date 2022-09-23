@@ -181,3 +181,15 @@ console.log(addTax(.10, 200));
 const addVAT = addTax.bind(null, .23)
 
 console.log(addVAT(1000))
+
+const tax = function (rate) {
+    return function (value) {
+
+        console.log(`Tax rate is ${rate}, on this amount ${value}`);
+        return value + value * rate
+    }
+}
+
+const tax15 = tax(.15)
+
+console.log(tax15(100))
