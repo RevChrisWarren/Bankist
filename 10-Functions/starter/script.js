@@ -224,6 +224,7 @@ const poll = {
 document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll))
 
 const displayResult = function (type) {
-    console.log(`The results are ${poll.answers}`);
+    console.log(`The results are ${type}`);
 }
-displayResult(5, 2, 3)
+displayResult([5, 2, 3])
+displayResult([1, 5, 3, 9, 6, 1])
