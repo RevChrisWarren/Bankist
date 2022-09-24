@@ -237,7 +237,7 @@ displayResult([1, 5, 3, 9, 6, 1])
 
 
 //poll.displayResults.call({answers: [5,2,3] })
-*/
+
 
 //Immediately Invoked Function Expression
 const runOnce = function () {
@@ -251,4 +251,20 @@ runOnce();
 })();
 //IIFE in arrow function
 (() => console.log('This will also never run again'))();
+*/
+//CLOSURES
+const secureBooking = function () {
+    let passengerCount = 0;
 
+    return function () {
+        passengerCount++
+        console.log(`${passengerCount} passengers`);
+    }
+}
+
+const booker = secureBooking();
+booker();
+booker();
+booker();
+
+console.dir(booker);
