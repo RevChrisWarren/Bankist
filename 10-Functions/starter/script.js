@@ -193,7 +193,7 @@ const tax = function (rate) {
 const tax15 = tax(.15)
 
 console.log(tax15(100))
-*/
+
 
 const poll = {
     question: 'What is your favorite programming language?',
@@ -237,3 +237,18 @@ displayResult([1, 5, 3, 9, 6, 1])
 
 
 //poll.displayResults.call({answers: [5,2,3] })
+*/
+
+//Immediately Invoked Function Expression
+const runOnce = function () {
+    console.log('This will never run again');
+}
+runOnce();
+
+//This is an IIFE
+(function () {
+    console.log('This will never run again');
+})();
+//IIFE in arrow function
+(() => console.log('This will also never run again'))();
+
