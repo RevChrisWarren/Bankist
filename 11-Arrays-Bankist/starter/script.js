@@ -181,3 +181,23 @@ currenciesUnique.forEach(function (value, key, set) {
   console.log(`${key}: ${value}: ${set}`);
 })
 */
+
+const julia1 = [3, 5, 2, 12, 7]
+const kate1 = [4, 1, 15, 8, 3]
+const julia2 = [9, 16, 6, 8, 3]
+const kate2 = [10, 5, 6, 1, 4]
+
+const checkDog = function (arr) {
+  arr.forEach(function (age, i) {
+    if (age >= 3) {
+      console.log(`Dog number ${i + 1} is an adult and is ${age} years old`);
+    } else {
+      console.log(`Dog number ${i + 1} is still a puppy`)
+    }
+  });
+}
+
+checkDog([...julia1.slice(1, 3), ...kate1])
+checkDog([...julia2.slice(1, 3), ...kate2])
+
+
