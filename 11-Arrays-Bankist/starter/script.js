@@ -197,7 +197,22 @@ const checkDog = function (arr) {
   });
 }
 
-checkDog([...julia1.slice(1, 3), ...kate1])
-checkDog([...julia2.slice(1, 3), ...kate2])
+// checkDog([...julia1.slice(1, 3), ...kate1])
+// checkDog([...julia2.slice(1, 3), ...kate2])
 
-
+//teacher solution
+const checkDogs = function (dogsJulia, dogsKate) {
+  const dogsJuliaCorrected = dogsJulia.slice()
+  dogsJuliaCorrected.splice(0, 1);
+  dogsJuliaCorrected.splice(-2);
+  const dogs = dogsJuliaCorrected.concat(dogsKate)
+  dogs.forEach(function (age, i) {
+    if (age >= 3) {
+      console.log(`Dog number ${i + 1} is an adult and is ${age} years old`);
+    } else {
+      console.log(`Dog number ${i + 1} is still a puppy`)
+    }
+  });
+}
+checkDogs(julia1, kate1)
+checkDogs(julia2, kate2)
