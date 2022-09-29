@@ -270,3 +270,8 @@ const depositsFor = []
 
 for (const mov of movements1) if (mov > 0) depositsFor.push(mov);
 console.log(depositsFor);
+
+const withdrawals = movements1.filter(function (mov) {
+  return mov < 0
+})
+console.log(withdrawals);
