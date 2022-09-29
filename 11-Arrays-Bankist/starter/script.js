@@ -61,6 +61,8 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+
+
 const displayMovements = function (movements) {
   containerMovements.innerHTML = "";
 
@@ -89,7 +91,15 @@ const createUsernames = function (accts) {
 }
 
 createUsernames(accounts)
-console.log(accounts);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0)
+  labelBalance.textContent = `${balance}€`
+}
+calcDisplayBalance(account1.movements)
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -100,7 +110,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
 
 /////////////////////////////////////////////////
 /*
@@ -158,17 +168,17 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // // for (const movement of movements) {
 // for (const [i, movement] of movements.entries()) {
 //   if (movement > 0) {
-//     console.log(`Movement ${i+1}:You deposited ${movement}`)
+//     console.log(`Movement ${ i + 1 }:You deposited ${ movement } `)
 //   } else {
-//     console.log(`Movement ${i+1}:You withdrew ${Math.abs(movement)}`)
+//     console.log(`Movement ${ i + 1 }:You withdrew ${ Math.abs(movement) } `)
 //   }
 // }
 //NAMES DON'T MATTER, BUT ORDER DOES IN PARAMETERS
 movements.forEach(function (movement, index, array) {
   if (movement > 0) {
-    console.log(`Movement ${index + 1}: You deposited ${movement}`)
+    console.log(`Movement ${ index + 1 }: You deposited ${ movement } `)
   } else {
-    console.log(`Movement ${index + 1}: You withdrew ${Math.abs(movement)}`)
+    console.log(`Movement ${ index + 1 }: You withdrew ${ Math.abs(movement) } `)
   }
 });
 
@@ -183,7 +193,7 @@ const currencies = new Map([
 ]);
 //MAP
 currencies.forEach(function (value, key, map) {
-  console.log(`${key}: ${value}: ${map}`);
+  console.log(`${ key }: ${ value }: ${ map } `);
 })
 
 //SET
@@ -192,7 +202,7 @@ const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR'])
 console.log(currenciesUnique);
 
 currenciesUnique.forEach(function (value, key, set) {
-  console.log(`${key}: ${value}: ${set}`);
+  console.log(`${ key }: ${ value }: ${ set } `);
 })
 */
 /*
@@ -204,9 +214,9 @@ const kate2 = [10, 5, 6, 1, 4]
 const checkDog = function (arr) {
   arr.forEach(function (age, i) {
     if (age >= 3) {
-      console.log(`Dog number ${i + 1} is an adult and is ${age} years old`);
+      console.log(`Dog number ${ i + 1 } is an adult and is ${ age } years old`);
     } else {
-      console.log(`Dog number ${i + 1} is still a puppy`)
+      console.log(`Dog number ${ i + 1 } is still a puppy`)
     }
   });
 }
@@ -222,9 +232,9 @@ const checkDogs = function (dogsJulia, dogsKate) {
   const dogs = dogsJuliaCorrected.concat(dogsKate)
   dogs.forEach(function (age, i) {
     if (age >= 3) {
-      console.log(`Dog number ${i + 1} is an adult and is ${age} years old`);
+      console.log(`Dog number ${ i + 1 } is an adult and is ${ age } years old`);
     } else {
-      console.log(`Dog number ${i + 1} is still a puppy`)
+      console.log(`Dog number ${ i + 1 } is still a puppy`)
     }
   });
 }
@@ -249,11 +259,11 @@ console.log(movementsUSDFor);
 const movementsUSD = movements1.map(mov => mov * euroToUsd)
 console.log(movementsUSD);
 
-const movementsDescriptions = movements1.map((el, i) => `Movement ${i + 1}: You ${el > 0 ? 'deposited' : 'withdrew'} ${Math.abs(el)} `
+const movementsDescriptions = movements1.map((el, i) => `Movement ${ i + 1 }: You ${ el > 0 ? 'deposited' : 'withdrew' } ${ Math.abs(el) } `
   // if (el > 0) {
-  //   return `Movement ${i + 1}: You deposited ${el} `;
+  //   return `Movement ${ i + 1 }: You deposited ${ el } `;
   // } else {
-  //   return `Movement ${i + 1}: You withdrew ${Math.abs(el)} `;
+  //   return `Movement ${ i + 1 }: You withdrew ${ Math.abs(el) } `;
   // }
 )
 
@@ -275,13 +285,13 @@ const withdrawals = movements1.filter(mov => mov < 0);
 //   return mov < 0
 // })
 console.log(withdrawals);
-*/
+
 //REDUCE METHOD - boil down elements in array to one value
 
 const movements1 = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //accumulator is like snowball... must specify starting point in final argument: here it is 0
 // const balance = movements1.reduce(function (accumulator, curEl, i, array) {
-//   console.log(`Iteration ${i}: ${accumulator}`);
+//   console.log(`Iteration ${ i }: ${ accumulator } `);
 //   return accumulator + curEl
 // }, 0);
 const balance = movements1.reduce((acc, cur) => acc + cur, 0)
@@ -292,3 +302,14 @@ let balanceFor = 0;
 
 for (const mov of movements) balanceFor += mov;
 console.log(balanceFor);
+
+//MAXMUM VALUE USING REDUCE
+
+const maxValue = movements1.reduce((acc, mov) => {
+  if (acc > mov)
+    return acc;
+  else
+    return mov
+}, movements[0])
+console.log(maxValue);
+*/
