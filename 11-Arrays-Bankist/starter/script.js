@@ -258,7 +258,7 @@ const movementsDescriptions = movements1.map((el, i) => `Movement ${i + 1}: You 
 )
 
 console.log(movementsDescriptions);
-*/
+//FILTER METHOD
 const movements1 = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const deposits = movements1.filter(function (mov) {
   return mov > 0;
@@ -270,8 +270,25 @@ const depositsFor = []
 
 for (const mov of movements1) if (mov > 0) depositsFor.push(mov);
 console.log(depositsFor);
-
-const withdrawals = movements1.filter(function (mov) {
-  return mov < 0
-})
+const withdrawals = movements1.filter(mov => mov < 0);
+// const withdrawals = movements1.filter(function (mov) {
+//   return mov < 0
+// })
 console.log(withdrawals);
+*/
+//REDUCE METHOD - boil down elements in array to one value
+
+const movements1 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+//accumulator is like snowball... must specify starting point in final argument: here it is 0
+// const balance = movements1.reduce(function (accumulator, curEl, i, array) {
+//   console.log(`Iteration ${i}: ${accumulator}`);
+//   return accumulator + curEl
+// }, 0);
+const balance = movements1.reduce((acc, cur) => acc + cur, 0)
+
+console.log(balance);
+
+let balanceFor = 0;
+
+for (const mov of movements) balanceFor += mov;
+console.log(balanceFor);
