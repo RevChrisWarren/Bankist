@@ -71,7 +71,7 @@ const displayMovements = function (movements) {
     const html = `
     <div class="movements__row">
 <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
-<div class="movements__value">${mov}</div>
+<div class="movements__value">${mov} €</div>
 </div>`;
     containerMovements.insertAdjacentHTML("afterbegin", html)
   });
@@ -94,9 +94,37 @@ createUsernames(accounts)
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0)
-  labelBalance.textContent = `${balance}€`
+  labelBalance.textContent = `${balance} €`
 }
 calcDisplayBalance(account1.movements)
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) =>
+      acc + mov, 0
+    )
+  labelSumIn.textContent = `${incomes}€`
+
+  const outgo = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) =>
+      acc + mov, 0
+    )
+  labelSumOut.textContent = `${Math.abs(outgo)}€`
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => deposit * .012)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`
+}
+
+calcDisplaySummary(account1.movements)
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -312,7 +340,7 @@ const maxValue = movements1.reduce((acc, mov) => {
     return mov
 }, movements[0])
 console.log(maxValue);
-*/
+
 
 const data = [5, 2, 4, 1, 15, 8, 3]
 const data2 = [16, 6, 10, 5, 6, 1, 4]
@@ -326,7 +354,7 @@ const dogToHuman = data.map((el) => {
 
 console.log(dogToHuman);
 
-const filteredDogs = dogToHuman.filter((el) => el >= 18);
+const filteredDogs = dogToHuman.filter(el => el >= 18);
 
 console.log(filteredDogs);
 
@@ -335,6 +363,8 @@ const average = filteredDogs.reduce((acc, el) => acc + el, 0) / filteredDogs.len
 console.log(average);
 
 //TEACHER SOLUTION
+const data = [5, 2, 4, 1, 15, 8, 3]
+const data2 = [16, 6, 10, 5, 6, 1, 4]
 const calcAverageHumanAge = function (ages) {
   const humanAges = ages.map(age => age <= 2 ? age * 2 : age * 4 + 16)
   const adults = humanAges.filter(age => age >= 18);
@@ -347,3 +377,34 @@ const ages2 = calcAverageHumanAge(data2)
 
 console.log(ages1);
 console.log(ages2);
+
+const euroToUsd = 1.1;
+
+
+const totalDepositsInUSD = movements
+  .filter(mov => mov > 0)
+  // .map((mov, i, arr) => {
+  //   console.log(arr);
+  //   return mov * euroToUsd
+  // })
+  .map(mov => mov * euroToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsInUSD);
+
+*/
+const data = [5, 2, 4, 1, 15, 8, 3]
+const data2 = [16, 6, 10, 5, 6, 1, 4]
+const calcAverageAge = (array) => {
+  const average = array
+    .map(el => (el <= 2 ? el * 2 : el * 4 + 16))
+    .filter(el => el >= 18)
+    .reduce((acc, el, i, arr) => acc + el / arr.length, 0)
+  console.log(average);
+}
+
+
+calcAverageAge(data)
+calcAverageAge(data2)
+
+
