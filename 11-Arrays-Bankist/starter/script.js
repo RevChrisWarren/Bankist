@@ -230,7 +230,7 @@ const checkDogs = function (dogsJulia, dogsKate) {
 }
 checkDogs(julia1, kate1)
 checkDogs(julia2, kate2)
-*/
+
 const euroToUsd = 1.1;
 
 const movements1 = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -258,3 +258,15 @@ const movementsDescriptions = movements1.map((el, i) => `Movement ${i + 1}: You 
 )
 
 console.log(movementsDescriptions);
+*/
+const movements1 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const deposits = movements1.filter(function (mov) {
+  return mov > 0;
+})
+console.log(deposits);
+
+//same thing with for/of loop
+const depositsFor = []
+
+for (const mov of movements1) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
