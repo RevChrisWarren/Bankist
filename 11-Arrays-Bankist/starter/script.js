@@ -117,7 +117,6 @@ const calcDisplaySummary = function (movements) {
     .filter(mov => mov > 0)
     .map(deposit => deposit * .012)
     .filter((int, i, arr) => {
-      console.log(arr);
       return int >= 1
     })
     .reduce((acc, int) => acc + int, 0);
@@ -392,7 +391,7 @@ const totalDepositsInUSD = movements
 
 console.log(totalDepositsInUSD);
 
-*/
+
 const data = [5, 2, 4, 1, 15, 8, 3]
 const data2 = [16, 6, 10, 5, 6, 1, 4]
 const calcAverageAge = (array) => {
@@ -408,3 +407,17 @@ calcAverageAge(data)
 calcAverageAge(data2)
 
 
+//FIND METHOD
+//used to retrieve first element of an array based on conditions
+const firstWithdrawal = movements.find(mov => mov < 0)
+console.log(movements);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+const account = accounts.find(acc => acc.owner === 'Jessica Davis')
+console.log(account);
+
+for (const acc of accounts)
+  if (acc.owner === 'Jonas Schmedtmann')
+    console.log(acc);
+*/
