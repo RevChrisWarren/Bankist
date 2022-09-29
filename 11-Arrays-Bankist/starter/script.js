@@ -313,3 +313,37 @@ const maxValue = movements1.reduce((acc, mov) => {
 }, movements[0])
 console.log(maxValue);
 */
+
+const data = [5, 2, 4, 1, 15, 8, 3]
+const data2 = [16, 6, 10, 5, 6, 1, 4]
+
+const dogToHuman = data.map((el) => {
+  if (el <= 2)
+    return el * 2
+  else
+    return 16 + el * 4
+})
+
+console.log(dogToHuman);
+
+const filteredDogs = dogToHuman.filter((el) => el >= 18);
+
+console.log(filteredDogs);
+
+const average = filteredDogs.reduce((acc, el) => acc + el, 0) / filteredDogs.length;
+
+console.log(average);
+
+//TEACHER SOLUTION
+const calcAverageHumanAge = function (ages) {
+  const humanAges = ages.map(age => age <= 2 ? age * 2 : age * 4 + 16)
+  const adults = humanAges.filter(age => age >= 18);
+  const average = adults.reduce((acc, el) => acc + el, 0) / adults.length
+  return average
+}
+
+const ages1 = calcAverageHumanAge(data)
+const ages2 = calcAverageHumanAge(data2)
+
+console.log(ages1);
+console.log(ages2);
