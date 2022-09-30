@@ -92,30 +92,31 @@ const createUsernames = function (accts) {
 
 createUsernames(accounts)
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0)
-  labelBalance.textContent = `${balance} €`
-}
-calcDisplayBalance(account1.movements)
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0)
+  labelBalance.textContent = `${acc.balance}€`
 
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+}
+// calcDisplayBalance(account1.movements)
+
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) =>
       acc + mov, 0
     )
   labelSumIn.textContent = `${incomes}€`
 
-  const outgo = movements
+  const outgo = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) =>
       acc + mov, 0
     )
   labelSumOut.textContent = `${Math.abs(outgo)}€`
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => deposit * .012)
+    .map(deposit => deposit * acc.interestRate / 100)
     .filter((int, i, arr) => {
       return int >= 1
     })
@@ -123,10 +124,68 @@ const calcDisplaySummary = function (movements) {
   labelSumInterest.textContent = `${interest}€`
 }
 
-calcDisplaySummary(account1.movements)
+// calcDisplaySummary(account1.movements)
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+const updateUI = function (acc) {
+  displayMovements(currentAccount.movements);
+  calcDisplayBalance(currentAccount);
+  calcDisplaySummary(currentAccount)
+}
+
+//EVENT HANDLERS
+let currentAccount;
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    labelWelcome.textContent = `Welcome Back, ${currentAccount.owner.split(' ')[0]}`
+    containerApp.style.opacity = 100;
+
+  } else {
+    containerApp.style.opacity = 0;
+  }
+  //clear input fields
+  inputLoginPin.value = inputLoginUsername.value = '';
+  inputLoginPin.blur();
+
+  updateUI(currentAccount)
+})
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAccount = accounts.find(acc => acc.username === inputTransferTo.value
+  );
+  inputTransferAmount.value = inputTransferTo.value = '';
+  if (amount > 0 && currentAccount.balance >= amount &&
+    receiverAccount &&
+    receiverAccount.username !== currentAccount.username) {
+
+    currentAccount.movements.push(-amount)
+    receiverAccount.movements.push(amount)
+    updateUI(currentAccount)
+  }
+});
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault()
+  if (currentAccount.username === inputCloseUsername.value &&
+    currentAccount.pin === Number(inputClosePin.value)) {
+    const index = accounts.findIndex(acc => acc.username ===
+      currentAccount.username)
+    console.log(index);
+    accounts.splice(index, 1)
+    containerApp.style.opacity = 0;
+    inputClosePin.value = inputCloseUsername.value = '';
+  }
+})
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -421,3 +480,6 @@ for (const acc of accounts)
   if (acc.owner === 'Jonas Schmedtmann')
     console.log(acc);
 */
+//FINDINDEX Method
+
+
