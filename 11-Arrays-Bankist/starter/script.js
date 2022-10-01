@@ -63,10 +63,12 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = "";
 
-  movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `
     <div class="movements__row">
@@ -174,6 +176,18 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value)
+
+  if (amount > 0 &&
+    currentAccount.movements.some(mov => mov >= amount * .1)) {
+    currentAccount.movements.push(amount)
+    updateUI(currentAccount)
+  }
+  inputLoanAmount.value = '';
+});
+
 btnClose.addEventListener('click', function (e) {
   e.preventDefault()
   if (currentAccount.username === inputCloseUsername.value &&
@@ -186,6 +200,13 @@ btnClose.addEventListener('click', function (e) {
     inputClosePin.value = inputCloseUsername.value = '';
   }
 })
+let sortedState = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sortedState)
+  sortedState = !sortedState;
+})
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -479,7 +500,80 @@ console.log(account);
 for (const acc of accounts)
   if (acc.owner === 'Jonas Schmedtmann')
     console.log(acc);
+
+console.log(movements);
+//CHECKS FOR EQUALITY
+console.log(movements.includes(-130));
+
+//CAN HAVE CONDITION
+const anyDeposits = movements.some(mov => mov > 0)
+console.log(anyDeposits);
+
+//EVERY Boolean- only returns true if every element passes the condition
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+// Separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
+
+
+
+//FLAT AND FLATMAP Flat removes nested arrays and puts all elements in one array
+//FLAT goes as deep as is the parameter in the function
+
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [[4, 5], 6], 7, 8];
+
+console.log(arrDeep.flat(2));
+
+const accountMovements = accounts.map(acc => acc.movements)
+
+console.log(accountMovements);
+
+
+const allValues = accountMovements.flat()
+console.log(allValues);
+const overallBalance = allValues.reduce((acc, mov) => acc + mov, 0)
+console.log(overallBalance);
+
+//Same thing with chaining
+const overallBal = accounts.map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0)
+
+console.log(overallBal);
+//flatMap goes only one level deep
+const overallB = accounts.flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0)
+console.log(overallB);
 */
-//FINDINDEX Method
 
+//SORTING ARRAYS
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha']
+console.log(owners.sort())
 
+console.log(owners);
+console.log(movements);
+//Sort works as if these are strings
+console.log(movements.sort());
+
+//for Numbers in ascending order
+// if < 0 - A, B
+// if >0 - B, A
+movements.sort((a, b) => {
+  if (a > b)
+    return 1 //SWITCH Order
+  if (b > a)
+    return -1 // KEEP Order
+})
+console.log(movements);
+
+//OR
+//because if A>B it will return positive and if B>A it will return negative
+movements.sort((a, b) => a - b);
+console.log(movements);
