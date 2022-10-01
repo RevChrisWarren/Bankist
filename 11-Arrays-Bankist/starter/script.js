@@ -599,7 +599,7 @@ console.log(y);
 const z = Array.from({ length: 12 }, (currentElement, i) => 1 + i)
 console.log(z);
 
-const dice = Array.from({ length: 100 }, () => Number(Math.floor(Math.random() * 7) + Math.floor(Math.random() * 7)));
+const dice = Array.from({ length: 100 }, () => Number(Math.ceil(Math.random() * 6) + Math.ceil(Math.random() * 6)));
 console.log(dice);
 
 //TO GET VALUES FROM UI
