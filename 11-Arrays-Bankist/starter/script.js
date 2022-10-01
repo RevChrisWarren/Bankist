@@ -602,3 +602,14 @@ console.log(z);
 const dice = Array.from({ length: 100 }, () => Number(Math.floor(Math.random() * 7) + Math.floor(Math.random() * 7)));
 console.log(dice);
 
+//TO GET VALUES FROM UI
+const movementsUI = Array.from(document.querySelectorAll('.movements__value'));
+
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    element => Number(element.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+})
