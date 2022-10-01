@@ -551,7 +551,7 @@ console.log(overallBal);
 const overallB = accounts.flatMap(acc => acc.movements)
   .reduce((acc, mov) => acc + mov, 0)
 console.log(overallB);
-*/
+
 
 //SORTING ARRAYS
 const owners = ['Jonas', 'Zach', 'Adam', 'Martha']
@@ -577,3 +577,28 @@ console.log(movements);
 //because if A>B it will return positive and if B>A it will return negative
 movements.sort((a, b) => a - b);
 console.log(movements);
+*/
+
+//PROGRAMMATICALLY CREATING AND FILLING ARRAYS
+//creates new array with 7 empty spaces 
+const x = new Array(7);
+console.log(x);
+//Map will not work
+//x.fill(1);
+x.fill(1, 3, 5)
+console.log(x);
+
+const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+arr.fill(23, 2, 6)
+console.log(arr);
+
+//Array.from
+const y = Array.from({ length: 12 }, () => 1)
+console.log(y);
+
+const z = Array.from({ length: 12 }, (currentElement, i) => 1 + i)
+console.log(z);
+
+const dice = Array.from({ length: 100 }, () => Number(Math.floor(Math.random() * 7) + Math.floor(Math.random() * 7)));
+console.log(dice);
+
