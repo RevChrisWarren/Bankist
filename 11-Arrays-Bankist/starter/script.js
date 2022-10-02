@@ -614,4 +614,15 @@ labelBalance.addEventListener('click', function () {
   console.log(movementsUI);
 })
 */
+//#1
+const bankDepositSum = accounts.flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((acc, mov) => acc + mov, 0)
 
+console.log(bankDepositSum);
+
+//#2
+const numDeposits1000 = accounts.flatMap(acc => acc.movements)
+  .filter(mov => mov > 1000)
+console.log(numDeposits1000);
+console.log(numDeposits1000.length);
