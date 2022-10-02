@@ -577,7 +577,7 @@ console.log(movements);
 //because if A>B it will return positive and if B>A it will return negative
 movements.sort((a, b) => a - b);
 console.log(movements);
-*/
+
 
 //PROGRAMMATICALLY CREATING AND FILLING ARRAYS
 //creates new array with 7 empty spaces 
@@ -613,3 +613,5 @@ labelBalance.addEventListener('click', function () {
   );
   console.log(movementsUI);
 })
+*/
+
