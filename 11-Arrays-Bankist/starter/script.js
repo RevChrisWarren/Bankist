@@ -613,7 +613,7 @@ labelBalance.addEventListener('click', function () {
   );
   console.log(movementsUI);
 })
-*/
+
 //#1
 const bankDepositSum = accounts.flatMap(acc => acc.movements)
   .filter(mov => mov > 0)
@@ -664,3 +664,92 @@ const convertTitleCase = function (title) {
 console.log(convertTitleCase('this is a nice title'));
 console.log(convertTitleCase('this is a LONG title but not too long'));
 console.log(convertTitleCase('and here is another title with an EXAMPLE'));
+*/
+
+//TEST DATA:
+
+const dogs = [
+  {
+    weight: 22,
+    curFood: 250,
+    owners: ['Alice', 'Bob']
+  },
+  {
+    weight: 8,
+    curFood: 200,
+    owners: ['Matilda']
+  },
+  {
+    weight: 13,
+    curFood: 275,
+    owners: ['Sarah', 'John']
+  },
+  {
+    weight: 32,
+    curFood: 340,
+    owners: ['Michael']
+  }
+]
+
+for (const obj of dogs) {
+  obj.properFood = obj.weight ** 0.75 * 28
+  console.log(obj.properFood);
+}
+
+for (const obj of dogs) {
+  if (obj.owners.includes('Sarah')) {
+    console.log(obj.curFood > obj.properFood ? "Sarah's dog is eating too much!" : "Sarah's dog is not eating enough!")
+  }
+}
+let ownersEatTooMuch = []
+let ownersEatTooLittle = []
+for (const obj of dogs) {
+  obj.curFood > obj.properFood ? ownersEatTooMuch.push(obj.owners) : ownersEatTooLittle.push(obj.owners)
+  ownersEatTooLittle = ownersEatTooLittle.flat()
+  ownersEatTooMuch = ownersEatTooMuch.flat()
+}
+
+console.log(ownersEatTooLittle)
+console.log(ownersEatTooMuch);
+
+const logStr = function (arr) {
+  console.log(`${arr[0]} and ${arr[1]} and ${arr[2]}'s dogs eat too little!`);
+}
+
+const logStr2 = function (arr) {
+  console.log(`${arr[0]} and ${arr[1]} and ${arr[2]}'s dogs eat too much!`);
+}
+
+
+logStr(ownersEatTooLittle)
+logStr2(ownersEatTooMuch)
+
+const anyPerfDogs = dogs.some(dogs => dogs.curFood === dogs.properFood);
+console.log(anyPerfDogs);
+
+const anyGoodDogs = dogs.some(dogs => dogs.curFood < dogs.properFood * 1.1 && dogs.curFood > dogs.properFood * .9)
+console.log(anyGoodDogs);
+
+let goodDogs = []
+for (const obj of dogs) {
+  if (obj.curFood < obj.properFood * 1.1 && obj.curFood > obj.properFood * .9) goodDogs.push(obj)
+}
+
+console.log(goodDogs);
+
+const dogs2 = dogs.slice()
+
+
+// for Numbers in ascending order
+//  if < 0 - A, B
+//  if >0 - B, A
+// movements.sort((a, b) => {
+//   if (a > b)
+//     return 1 //SWITCH Order
+//   if (b > a)
+//     return -1 // KEEP Order
+// })
+// console.log(movements);
+
+dogs2.sort((a, b) => (a.properFood > b.properFood) ? 1 : -1)
+console.log(dogs2);
