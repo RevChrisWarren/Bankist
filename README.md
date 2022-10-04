@@ -4,4 +4,4 @@
 
 ## Built using HTML, CSS, and Javascript
 
-![Screenshot](./bankistss.png)
+![Screenshot](bankist/bankistss.png)
