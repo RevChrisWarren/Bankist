@@ -734,19 +734,27 @@ const logStr2 = function (arr) {
 
 logStr(ownersEatTooLittle)
 logStr2(ownersEatTooMuch)
+// console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
+// console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
 
-const anyPerfDogs = dogs.some(dogs => dogs.curFood === dogs.properFood);
+const anyPerfDogs = dogs.some(dog => dog.curFood === dog.properFood);
 console.log(anyPerfDogs);
 
-const anyGoodDogs = dogs.some(dogs => dogs.curFood < dogs.properFood * 1.1 && dogs.curFood > dogs.properFood * .9)
+const anyGoodDogs = dogs.some(dog => dog.curFood < dog.properFood * 1.1 && dog.curFood > dog.properFood * .9)
 console.log(anyGoodDogs);
 
 let goodDogs = []
 for (const obj of dogs) {
   if (obj.curFood < obj.properFood * 1.1 && obj.curFood > obj.properFood * .9) goodDogs.push(obj)
 }
-
 console.log(goodDogs);
+
+const checkEatingOK = dog =>
+  dog.curFood < dog.properFood * 1.1 && dog.curFood >
+  dog.properFood * .9;
+
+console.log(dogs.filter(checkEatingOK));
+
 
 const dogs2 = dogs.slice()
 
@@ -764,3 +772,8 @@ const dogs2 = dogs.slice()
 
 dogs2.sort((a, b) => (a.properFood > b.properFood) ? 1 : -1)
 console.log(dogs2);
+
+const dogsCopy = dogs.slice()
+  .sort((a, b) => (a.properFood > b.properFood) ? 1 : -1)
+
+console.log(dogsCopy);
