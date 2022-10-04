@@ -695,12 +695,17 @@ for (const obj of dogs) {
   obj.properFood = obj.weight ** 0.75 * 28
   console.log(obj.properFood);
 }
+//dogs.forEach(dog => (dog.recFood = Math.trunc(dog.weight ** 0.75 * 28)))
 
 for (const obj of dogs) {
   if (obj.owners.includes('Sarah')) {
     console.log(obj.curFood > obj.properFood ? "Sarah's dog is eating too much!" : "Sarah's dog is not eating enough!")
   }
 }
+
+//const dogSarah = dogs.find(dog => dog.owners.includes('Sarah))
+//console.log(`Sarah's dog is eating too ${dogSarah.curFood > dogSarah.recFood ? 'much' : 'little'
+//})
 let ownersEatTooMuch = []
 let ownersEatTooLittle = []
 for (const obj of dogs) {
@@ -711,6 +716,12 @@ for (const obj of dogs) {
 
 console.log(ownersEatTooLittle)
 console.log(ownersEatTooMuch);
+
+//const ownersEatTooMuch = dogs.filter(dog => dog.curFood > dog.recFood)
+//.flatMap(dog => dog.owners)
+//const ownersEatTooMuch = dogs.filter(dog => dog.curFood < dog.recFood)
+//.flatMap(dog => dog.owners)
+
 
 const logStr = function (arr) {
   console.log(`${arr[0]} and ${arr[1]} and ${arr[2]}'s dogs eat too little!`);
